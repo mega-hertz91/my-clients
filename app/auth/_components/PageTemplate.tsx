@@ -1,4 +1,6 @@
-export const PageTemplate = ({ children, title }: { children: React.ReactNode; title: string }) => {
+'use server'
+
+export const PageTemplate = async ({ children, title }: { children: React.ReactNode; title: string }) => {
   return (
     <>
       <h1 className="sr-only">{title}</h1>

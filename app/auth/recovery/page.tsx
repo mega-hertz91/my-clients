@@ -35,7 +35,7 @@ export default async function RecoveryPassword() {
         <li>
           <Button render={
             <Link href="./sign-up">Создать аккаунт</Link>
-          } nativeButton={false} className="w-full" />
+          } variant="outline" nativeButton={false} className="w-full" />
         </li>
       </ul>
     </PageTemplate>
