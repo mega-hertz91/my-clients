@@ -1,41 +1,28 @@
 import Link from 'next/link'
 
 import { Button } from "@/components/ui/button"
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
+import { Form } from '@/components/form'
 
 import { PageTemplate } from "../_components"
 import { HorizontalLineWithText } from "@/components/ui/horizontal-line"
+import { recovery } from '../_actions'
+import { scheme } from '../_config/recovery-form.config'
 
-export default async function RecoveryPassword() {
+export default function RecoveryPassword() {
   return (
-    <PageTemplate title="Восстановление пароля">
-      <form>
-        <FieldGroup className="pb-8">
-          <Field>
-            <FieldLabel htmlFor="name">Email</FieldLabel>
-            <Input id="name" autoComplete="off" placeholder="example@mail.com" />
-            <FieldDescription>Введите ваш email для идентификации аккаунта</FieldDescription>
-          </Field>
-        </FieldGroup>
-        <Button size="lg" className="w-full">Отправить</Button>
-      </form>
+    <PageTemplate title={scheme.title ?? ''}>
+      <Form schema={scheme} action={recovery} />
       <HorizontalLineWithText text="или" />
       <ul className='flex justify-between [&>li]:w-6/12 [&>li]:text-center w-full gap-x-4'>
         <li>
           <Button render={
-            <Link href="./sign-in">Войти</Link>
+            <Link href="/auth/sign-in">Войти</Link>
           } variant="outline" nativeButton={false} className="w-full" />
         </li>
         <li>
           <Button render={
-            <Link href="./sign-up">Создать аккаунт</Link>
-          } nativeButton={false} className="w-full" />
+            <Link href="/auth/sign-up">Создать аккаунт</Link>
+          } variant="outline" nativeButton={false} className="w-full" />
         </li>
       </ul>
     </PageTemplate>
